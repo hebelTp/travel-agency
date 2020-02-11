@@ -5,16 +5,23 @@ export const getAllTrips = ({trips}) => trips;
 
 export const getFilteredTrips = ({trips, filters}) => {
   let output = trips;
-
+  console.log(output);
   // filter by search phrase
   if(filters.searchPhrase){
     const pattern = new RegExp(filters.searchPhrase, 'i');
+    console.log(pattern);
     output = output.filter(trip => pattern.test(trip.name));
   }
 
   // TODO - filter by duration
 
   // TODO - filter by tags
+  if(filters.addTag) {
+    console.log(filters.addTag);
+    const pattern = new RegExp (filters.addTag, 'i');
+    console.log(pattern);
+    output = output.filter(trip => pattern.test( trip.tags) );
+  }
 
   // TODO - sort by cost descending (most expensive goes first)
 
