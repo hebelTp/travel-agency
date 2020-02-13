@@ -9,28 +9,37 @@ export const getFilteredTrips = ({trips, filters}) => {
   // filter by search phrase
   if(filters.searchPhrase){
     const pattern = new RegExp(filters.searchPhrase, 'i');
-    console.log(pattern);
+
     output = output.filter(trip => pattern.test(trip.name));
   }
 
   // TODO - filter by duration
-
+  console.log('DURATION', filters.duration);
+  if(filters.duration) {
+    output = output.filter(trip =>  filters.duration.from < trip.days &&
+                                                trip.days < filters.duration.to);
+  }
   // TODO - filter by tags
-  if(filters.addTag) {
-    console.log(filters.addTag);
-    const pattern = new RegExp (filters.addTag, 'i');
-    console.log(pattern);
+  if(filters.tags) {
+    console.log('filtersTags', filters.tags);
+    const pattern = new RegExp (filters.tags, 'i');
+
     output = output.filter(trip => pattern.test( trip.tags) );
+  }
+  if (filters.tags) {
+    const pattern = new RegExp (filters.tags, 'i');
+    output =output.filter(trip => pattern.test( trip.tags) );
   }
 
   // TODO - sort by cost descending (most expensive goes first)
 
   return output;
+
 };
 
 export const getTripById = ({trips}, tripId) => {
   const filtered = trips.filter(trip=> trip.id == tripId);
-  console.log(filtered);
+
   // TODO - filter trips by tripId
 
   console.log('filtering trips by tripId:', tripId, filtered);
