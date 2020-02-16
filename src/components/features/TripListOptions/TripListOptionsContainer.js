@@ -4,14 +4,11 @@ import {getAllTags} from '../../../redux/tagsRedux';
 import {getAllFilters, changeSearchPhrase, addTag, removeTag, changeDuration} from '../../../redux/filtersRedux';
 
 const mapStateToProps = state => {
-  console.log('STATE', state);
   return {
     tags: getAllTags(state),
     filters: getAllFilters(state),
   };
 };
-
-
 
 const mapDispatchToProps = dispatch => {
   //console.log(addTag);
@@ -32,6 +29,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
   // TODO - add more dispatchers for other filters
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripListOptions);

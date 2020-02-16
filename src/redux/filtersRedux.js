@@ -1,8 +1,6 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable indent */
 
-
-
 /* SELECTORS /*
     /* FUNCTION THAT FILTER SOME PART STATE OF APLICATION */
 
@@ -19,7 +17,6 @@ const reducerName = 'filters';
     /* CHANGE NAME OF ACTION FOR LONGER IDENTIFIER*/
     /* USING BACKTICK */
 const createActionName = name => `app/${reducerName}/${name}`;
-
 
 // action types
     /** DEFINE ACTION TYPE  */
@@ -48,7 +45,6 @@ export const changeDuration = payload => {
   };
 };
 */
-console.log('CHANGE_DURATION', changeDuration);
 // TODO - add other action creators
 
 // reducer
@@ -56,19 +52,14 @@ export default function reducer(statePart = [], action = {}) {
   /** SWITCH WORKS LIKE IF ...ELSE,
    * WE CHECK TYPE OF ACTION IF NOT CASE THEN DEFAULT --> IN THE END
     */
-  console.log('new action', action);
     switch (action.type) {
-
     case CHANGE_PHRASE:
-
       return {
-
         ...statePart,
         searchPhrase: action.payload,
       };
     // TODO - handle other action types
     case ADD_TAG:
-      //console.log(action);
       return {
         ...statePart,
         tags:[
@@ -77,16 +68,13 @@ export default function reducer(statePart = [], action = {}) {
         ],
       };
     case REMOVE_TAG:
-      //console.log(action);
-
       return {
        //wypakuj rzeczy ze state part
         ...statePart,
-       // tagi niech będą inne , tzn przfiltrowane
+       // a tagi niech będą inne , tzn przfiltrowane
         tags: [...statePart.tags.filter(tag => tag !== action.payload)],
       };
       case 'app/filters/CHANGE_DURATION':
-        console.log('stateBEFORe', statePart);
         const stateAfter = {
             // take current state, all state == initial state
             ...statePart,
@@ -97,7 +85,6 @@ export default function reducer(statePart = [], action = {}) {
              // KEY HAVE TO []    :   and there value,
              [action.payload.type]: action.payload.value },
             };
-        console.log('stateAFTER', stateAfter);
         return stateAfter;
     default:
       return statePart;
