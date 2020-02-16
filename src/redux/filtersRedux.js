@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable indent */
 
 
@@ -79,20 +80,25 @@ export default function reducer(statePart = [], action = {}) {
       //console.log(action);
 
       return {
+       //wypakuj rzeczy ze state part
         ...statePart,
-
+       // tagi niech będą inne , tzn przfiltrowane
         tags: [...statePart.tags.filter(tag => tag !== action.payload)],
       };
       case 'app/filters/CHANGE_DURATION':
-        //console.log('statepart',...statePart);
-        return {
+        console.log('stateBEFORe', statePart);
+        const stateAfter = {
             // take current state, all state == initial state
             ...statePart,
             // change object duration, overwrite duration
             duration: {
              ...statePart.duration,
+             // to or from              value
+             // KEY HAVE TO []    :   and there value,
              [action.payload.type]: action.payload.value },
-        };
+            };
+        console.log('stateAFTER', stateAfter);
+        return stateAfter;
     default:
       return statePart;
   }
