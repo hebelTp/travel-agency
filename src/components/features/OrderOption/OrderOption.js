@@ -3,18 +3,18 @@ import styles from './OrderOption';
 import PropTypes from 'prop-types';
 import  OrderOptionCheckboxes from './OrderOptionCheckboxes';
 import OrderOptionDropdown from './OrderOptionDropdown';
-import OrderOptionIcon from './OrderOptionIcons';
+import OrderOptionIcons from './OrderOptionIcons';
 import OrderOptionNumber from './OrderOptionNumber';
 
 const optionTypes = {
   dropdown: OrderOptionDropdown,
-  icons: OrderOptionIcon,
+  icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
 };
 //console.log(optionTypes);
 
-const  OrderOption = ({name, type,id ,setOrderOption ,  ...othetProps}) => {
+const  OrderOption = ({name, type,id ,setOrderOption ,  ...otherProps}) => {
   const OptionComponent = optionTypes[type];
 
   if(!OptionComponent) {
@@ -25,7 +25,9 @@ const  OrderOption = ({name, type,id ,setOrderOption ,  ...othetProps}) => {
         <h3 className={styles.title}>
           {name}
         </h3>
-        <OptionComponent {...othetProps} setOptionValue={value => setOrderOption({[id]: value})}/>
+        <OptionComponent setOptionValue={value => setOrderOption({[id]: value})}
+          {...otherProps}
+        />
       </div>
     );
 
