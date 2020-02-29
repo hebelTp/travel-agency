@@ -5,8 +5,8 @@ import {formatPrice} from '../../../utils/formatPrice';
 import Icon from '../../common/Icon/Icon';
 
 const OrderOptionIcons = (props) => {
-  console.log(props.values);
-  console.log(props.currentValue);
+// console.log(props.values);
+  //console.log('VALUE',props.currentValue);
   return (
     <div className={styles.icon }>
       {props.values.map(value => (
