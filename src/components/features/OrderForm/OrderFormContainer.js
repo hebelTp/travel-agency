@@ -9,7 +9,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     setOrderOption: (option) =>{
-      console.log(option);
       dispatch(setOrderOption(option));
     },
   };

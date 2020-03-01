@@ -8,7 +8,6 @@ export const calculateTotal = (tripCost, options) => {
   let multiplier = 0;
 
   for (let option of pricing) {
-    //console.log(pricing);
     const currentValue = options[option.id];
     console.log('currentValue', currentValue );
     if (typeof (currentValue) != 'undefined') {

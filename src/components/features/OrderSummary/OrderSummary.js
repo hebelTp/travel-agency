@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 
 
 const OrderSummary = ({tripCost, options}) => {
-  //console.log(tripCost);
   const totalTripCost = calculateTotal(formatPrice(tripCost),options);
-  console.log(totalTripCost);
   return (
     <h2 className={styles.component}>
     Total: $
@@ -18,7 +16,6 @@ const OrderSummary = ({tripCost, options}) => {
     </h2>
   );
 };
-
 
 OrderSummary.propTypes = {
   tripCost:PropTypes.string,

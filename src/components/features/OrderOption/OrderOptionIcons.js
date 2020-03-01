@@ -5,8 +5,6 @@ import {formatPrice} from '../../../utils/formatPrice';
 import Icon from '../../common/Icon/Icon';
 
 const OrderOptionIcons = (props) => {
-// console.log(props.values);
-  //console.log('VALUE',props.currentValue);
   return (
     <div className={styles.icon }>
       {props.values.map(value => (
@@ -22,8 +20,6 @@ const OrderOptionIcons = (props) => {
     </div>
   );
 };
-
-
 
 OrderOptionIcons.propTypes ={
   values: PropTypes.array,

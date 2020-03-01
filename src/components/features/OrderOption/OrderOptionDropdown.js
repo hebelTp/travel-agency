@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import {formatPrice} from '../../../utils/formatPrice';
 
 const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) => {
-  console.log(values);
   return (
-
     <select
       className={styles.dropdown}
       value={currentValue}
@@ -20,10 +18,7 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
       ))}
     </select>
   );
-
 };
-
-
 
 OrderOptionDropdown.propTypes = {
   values: PropTypes.array,

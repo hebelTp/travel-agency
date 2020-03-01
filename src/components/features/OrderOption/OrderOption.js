@@ -16,7 +16,6 @@ const optionTypes = {
   text: OrderOptionText,
   date: OrderOptionDate,
 };
-//console.log(optionTypes);
 
 const  OrderOption = ({name, type,setOrderOption ,id,  ...otherProps}) => {
   const OptionComponent = optionTypes[type];
@@ -34,7 +33,6 @@ const  OrderOption = ({name, type,setOrderOption ,id,  ...otherProps}) => {
         />
       </div>
     );
-
   }
 };
 
@@ -44,7 +42,7 @@ OrderOption.propTypes = {
   id: PropTypes.string,
   setOrderOption: PropTypes.func,
   type: PropTypes.string,
-  //
+
   values: PropTypes.array,
   defaultValue: PropTypes.node,
   required: PropTypes.bool,

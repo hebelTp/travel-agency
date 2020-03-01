@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { formatPrice } from '../../../utils/formatPrice';
 
 const newValueSet = (currentValue, id, checked) => {
-  console.log(currentValue);
   if(checked){
     return [
       ...currentValue,
@@ -17,11 +16,9 @@ const newValueSet = (currentValue, id, checked) => {
 
 
 const OrderOptionCheckboxes = (props) => {
-  console.log('PROPS_CURRENT', props.currentValue);
   return (
     <div className={styles.checkboxes}>
       {props.values.map(value => {
-        console.log(value);
         return (
           <label key={value.id}>
             <input
@@ -30,15 +27,11 @@ const OrderOptionCheckboxes = (props) => {
               checked={props.currentValue.includes(value.id)}
               onChange = {event => props.setOptionValue(newValueSet(props.currentValue , value.id, event.currentTarget.checked ))}
             >
-
             </input>
             {value.name} ({formatPrice(value.price)})
           </label>
-
         );
-
-      }
-      )}
+      })}
     </div>
   );
 };
@@ -48,7 +41,6 @@ OrderOptionCheckboxes.propTypes ={
   currentValue: PropTypes.array,
   setOptionValue: PropTypes.func,
   price: PropTypes.number,
-
 };
 
 export default OrderOptionCheckboxes;

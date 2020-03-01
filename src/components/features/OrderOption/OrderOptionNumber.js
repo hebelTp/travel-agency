@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {formatPrice} from '../../../utils/formatPrice';
 
 const OrderOptionNumber = (props) => {
-  console.log(props.currentValue);
   return (
 
     <div className={styles.number}>
