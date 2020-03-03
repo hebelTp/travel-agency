@@ -10,7 +10,7 @@ describe('Component Hero', () => {
     console.log(component.debug());
   });
 
-  it('should throw error withoud required props', () => {
+  it('should throw error without required props', () => {
     expect(() => shallow(<Hero /> )).toThrow;
   });
 
