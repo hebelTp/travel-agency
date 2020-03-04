@@ -12,7 +12,7 @@ describe('Component TripSummary', () => {
     console.log(component.debug());
   });
 
-  it('render correct props', () => {
+  it('img render correct props', () => {
     const expectedImage = 'image.jpg';
     const expectedAlterText = 'name';
 
@@ -25,4 +25,13 @@ describe('Component TripSummary', () => {
     expect(renderAlterText).toEqual(expectedAlterText);
   });
 
+  it ('exist correect render props', () => {
+    const expectedName = 'Janusz';
+    const expectedCost = '1111';
+    const expectedDays = 3;
+
+    const component = shallow(<TripSummary tags={[]} name={expectedName} cost={expectedCost} days={expectedDays} />);
+
+    expect(component).toBeTruthy;
+  });
 });
