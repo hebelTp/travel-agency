@@ -35,7 +35,24 @@ describe('Component TripSummary', () => {
     expect(component).toBeTruthy;
   });
 
-  it('should thtow error without rtequired props', () => {
+  it('should throw error without required props', () => {
     expect(() => shallow(<TripSummary /> )).toThrow();
   });
+
+  it('should render tags in correct order', () => {
+    const expectedTags = ['beach' , 'pool', 'spa'];
+    const component = shallow(<TripSummary tags={expectedTags}/>);
+
+    expect(component.find('.tag').at(0).text()).toEqual(expectedTags[0]);
+    expect(component.find('.tag').at(1).text()).toEqual(expectedTags[1]);
+    expect(component.find('.tag').at(2).text()).toEqual(expectedTags[2]);
+
+  });
+  // expect(wrapper.find('selector').exists()).toBeTruthy()
+
+  it('should not render tags if falls or empty array', () => {
+    const component = shallow(<TripSummary tags={['']}/>);
+    expect(component.find('.tags').exists()).toEqual(false);
+  });
+
 });
