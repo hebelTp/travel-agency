@@ -51,8 +51,10 @@ describe('Component TripSummary', () => {
   // expect(wrapper.find('selector').exists()).toBeTruthy()
 
   it('should not render tags if falls or empty array', () => {
-    const component = shallow(<TripSummary tags={['']}/>);
-    expect(component.find('.tags').exists()).toEqual(false);
+
+    const expectedTags = [];
+    const component = shallow(<TripSummary tags={expectedTags}/>);
+    expect(component.find('.tags').exists()).toEqual();
   });
 
 });
