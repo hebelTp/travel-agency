@@ -18,7 +18,7 @@ describe ('OrderOption test ', () => {
     const component = shallow(<OrderOption name={expectedTitle} type='checkboxes' />);
     const renderedTitle = component.find('.title').text();
     expect(renderedTitle).toEqual(expectedTitle);
-    console.log(component.debug());
+    //console.log(component.debug());
   });
 });
 
@@ -48,7 +48,7 @@ const mockProps = {
     max: 6,
   },
 };
-console.log('MOCK',[mockProps.id]);
+//console.log('MOCK',[mockProps.id]);
 const mockPropsForType = {
   dropdown: {},
   icons: {},
@@ -59,11 +59,11 @@ const mockPropsForType = {
 };
 
 const testValue = mockProps.values[1].id;
-const testValueNumber = 3;
+//const testValueNumber = 3;
 
-console.log(testValue);
-console.log(mockPropsForType);
-console.log(testValueNumber);
+//console.log('TESTVALUEE',testValue);
+//console.log(mockPropsForType);
+//console.log(testValueNumber);
 
 for (let type in optionTypes) {
   describe(`Component orderOption with type=${type}`, () => {
@@ -88,8 +88,8 @@ for (let type in optionTypes) {
       );
       subcomponent = component.find(optionTypes[type]);
       renderedSubcomponent = subcomponent.dive();
-      console.log(component.debug());
-      console.log(subcomponent.debug());
+      //console.log('TYPE',type);
+      //console.log(subcomponent.debug());
     });
 
 
@@ -97,7 +97,7 @@ for (let type in optionTypes) {
     it(`renders ${optionTypes[type]}`, () => {
       expect(subcomponent).toBeTruthy();
       expect(subcomponent.length).toBe(1);
-      console.log(subcomponent.length);
+      //console.log('LENGTHa',subcomponent.length);
     });
 
     /* type-specific tests */
@@ -106,9 +106,12 @@ for (let type in optionTypes) {
         /* tests for dropdown */
         it('contains select and options', () => {
           const select = renderedSubcomponent.find('.select');
+          console.log('SELECT', select);
+
           expect(select.length).toBe(1);
 
           const emptyOption = select.find('option[value=""]').length;
+
           expect(emptyOption).toBe(1);
 
           const options=select.find('option').not('[value=""]');
@@ -121,8 +124,26 @@ for (let type in optionTypes) {
           renderedSubcomponent.find('select').simulate('change', {currentTarget: {value: testValue}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({[mockProps.id]: testValue});
+          //console.log('EXA',{[mockProps.id]: testValue});
         });
+
+
         break;
+      }
+
+      case 'checkboxes': {
+        it('contains input', () => {
+          const input = renderedSubcomponent.find('.input');
+          console.log('INNa', input);
+
+          expect(input.length).toBe(0);
+
+          const emptyOption = input.find('option[value=""]').length;
+          expect(emptyOption).toBe(0);
+
+
+        });
+
       }
     }
   });
